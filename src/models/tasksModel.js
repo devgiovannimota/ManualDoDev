@@ -1,3 +1,4 @@
+const { request } = require("express");
 const connection = require("./connection");
 
 const getAll = async () => {
@@ -24,8 +25,18 @@ const deleteTask = async (id) => {
   return removeTask;
 };
 
+const updateTask = async (id, task) => {
+  const { tittle, status } = task;
+  const updatedTask = await connection.execute(
+    `UPDATE tasks SET tittle = ? , status = ? WHERE id_tasks = ?`,
+    [tittle, status, id]
+  );
+  return updatedTask;
+};
+
 module.exports = {
   getAll,
   createTask,
   deleteTask,
+  updateTask,
 };
