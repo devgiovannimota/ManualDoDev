@@ -15,7 +15,6 @@ const createTask = async (request, response) => {
 const deleteTask = async (request, response) => {
   const { id } = request.params;
   await tasksModel.deleteTask(id);
-  console.log(id);
 
   return response.status(204).json();
 };
