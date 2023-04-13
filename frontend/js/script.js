@@ -92,12 +92,22 @@ const createRow = (task) => {
     '<span class="material-symbols-outlined"> delete </span>'
   );
 
-  editForm.appendChild(editInput);
   const editForm = createElement("form");
   const editInput = createElement("input");
 
+  editInput.value = tittle;
+
+  editForm.appendChild(editInput);
+
+  editForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    updateTask({ id_tasks, tittle: editInput.value, status });
+    loadTasks();
+  });
+
   editButton.addEventListener("click", () => {
     tdTittle.innerText = "";
+    tdTittle.appendChild(editForm);
   });
   editButton.classList.add("btn-action");
   deleteButton.classList.add("btn-action");
