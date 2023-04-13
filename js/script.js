@@ -92,6 +92,13 @@ const createRow = (task) => {
     '<span class="material-symbols-outlined"> delete </span>'
   );
 
+  editForm.appendChild(editInput);
+  const editForm = createElement("form");
+  const editInput = createElement("input");
+
+  editButton.addEventListener("click", () => {
+    tdTittle.innerText = "";
+  });
   editButton.classList.add("btn-action");
   deleteButton.classList.add("btn-action");
 
